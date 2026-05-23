@@ -11,9 +11,16 @@ return Application::configure(basePath: dirname(__DIR__))
         commands: __DIR__.'/../routes/console.php',
         health: '/up',
     )
-    ->withMiddleware(function (Middleware $middleware): void {
-        //
+    ->withMiddleware(function (Middleware $middleware) {
+        
+        // Tambahkan baris ini untuk membypass token CSRF pada route API Ionic Anda
+        $middleware->validateCsrfTokens(except: [
+            'login',
+            'register',
+            'api/*' // Mengecualikan semua url yang diawali dengan /api/
+        ]);
+
     })
-    ->withExceptions(function (Exceptions $exceptions): void {
+    ->withExceptions(function (Exceptions $exceptions) {
         //
     })->create();

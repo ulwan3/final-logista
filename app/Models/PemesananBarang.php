@@ -16,6 +16,7 @@ class PemesananBarang extends Model
     protected $fillable = [
         'barang_id', 
         'supplier_id',  // ID Supplier yang dipilih
+        'nama_supplier', // Nama Supplier yang dipilih
         'user_id',      // Pastikan user_id bisa diisi
         'jumlah_pesan', // Sesuaikan dengan nama di database kamu
         'status', 
